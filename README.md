@@ -10,15 +10,7 @@ This project is aimed at building a sentiment analysis tool that can classify us
 
 ## Code Structure
 
-The code is structured into several functions, each performing a specific task:
-
-1. `prepare_data(data_path)`: This function loads and cleans the data.
-![Code Screenshot 1](images/image1.png)
-2. `clean_text(text)`: This function removes unnecessary characters from the review text and converts it to lowercase.
-3. `encode_labels(labels)`: This function encodes the sentiment labels as 0 (negative) and 1 (positive).
-4. `train_and_evaluate_lr(data)`: This function trains and evaluates a Logistic Regression model.
-5. `train_and_evaluate_rf(data)`: This function trains and evaluates a Random Forest model.
-
+The code is structured into several functions, each performing a specific task.
 
 ## Code explanation
 
@@ -33,8 +25,10 @@ This function cleans the input text by removing HTML tags and non-alphanumeric c
 3. encode_labels(labels) Function:
 
 This function converts the sentiment labels from 'positive' and 'negative' to 1 and 0, respectively. This is a necessary preprocessing step because machine learning models require numeric inputs.
+![Code Screenshot 1](images/image1.png)
 
 4. train_and_evaluate_lr(data) Function:
+![Code Screenshot 1](images/image2.png)
 
 This function trains and evaluates a Logistic Regression model.
 
@@ -44,13 +38,18 @@ The data is split into a training set, a validation set, and a test set using th
 The trained TF-IDF vectorizer is saved for future use using the dump function from the joblib module.
 Then, it checks if a model named 'best_model.pkl' already exists. If it does, it loads the model using the load function from the joblib module and uses it to predict the labels for the test set. If the model doesn't exist, it performs hyperparameter tuning using grid search, trains the best model on the training data, and saves it if its cross-validation score is above 0.8.
 Finally, it prints a classification report for the test data, which includes metrics such as precision, recall, and F1-score.
+
+
+
 5. train_and_evaluate_rf(data) Function:
+![Code Screenshot 1](images/image3.png)
 
 This function is similar to the train_and_evaluate_lr function but trains and evaluates a Random Forest model instead of a Logistic Regression model. The steps are mostly the same, except for the hyperparameters used for grid search and the model used for training and prediction.
 
 The results of the model evaluations are printed out in the form of classification reports. These reports provide detailed information about the performance of the models, including precision, recall, and F1-score for both the 'positive' and 'negative' classes.
 
 6. evaluate_bert(trainer, tokenizer, val_texts, val_labels) Function:
+![Code Screenshot 1](images/image4.png)
 
 This function is used to evaluate the performance of the BERT model on the validation dataset. It takes as inputs the trainer object, the tokenizer, the validation text data, and the corresponding labels.
 
@@ -73,7 +72,8 @@ The trained model is then saved for future use.
 Lastly, it calls the evaluate_bert function to evaluate the model's performance on the validation data.
 
 
-9. flag_reviews_for_response(data) Function:
+8. flag_reviews_for_response(data) Function:
+![Code Screenshot 1](images/image5.png)
 
 This function is used to flag reviews that require a response.
 
@@ -84,15 +84,17 @@ It then creates a new column 'response_flag' that indicates whether a response i
 The data is then divided into two datasets based on the 'response_flag' value and saved into separate CSV files.
 
 
-10. is_response_needed(review) Function:
+9. is_response_needed(review) Function:
+![Code Screenshot 1](images/image6.png)
 
 This function determines whether a response is needed for a given review. It works similarly to the flag_reviews_for_response function but operates on a single review.
 
 11. predict_sentiment(review) Function:
+![Code Screenshot 1](images/image7.png)
 
 This function predicts the sentiment of a review using all three models: Logistic Regression, Random Forest, and BERT. It prints out the predicted sentiment and the associated probability for each model.
 
-12. main() Function:
+13. main() Function:
 
 This is the main function that ties all the above parts together. It prepares the data, trains and evaluates the models, flags reviews for response, and then enters a loop where it repeatedly asks the user to input a review and then predicts the sentiment of the input review.
 
@@ -106,6 +108,7 @@ This is the main function that ties all the above parts together. It prepares th
 3. Run the main Python script.
 
 ## Results
+![Code Screenshot 1](images/image8.png)
 
 The performance of the models is evaluated using metrics such as precision, recall, and F1-score. The detailed results are printed out in the form of classification reports. The models achieved the following accuracies on the test set:
 
