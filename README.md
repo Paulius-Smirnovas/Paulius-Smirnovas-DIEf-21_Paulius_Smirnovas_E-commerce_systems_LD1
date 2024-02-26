@@ -13,7 +13,7 @@ This project is aimed at building a sentiment analysis tool that can classify us
 The code is structured into several functions, each performing a specific task:
 
 1. `prepare_data(data_path)`: This function loads and cleans the data.
-![Code Screenshot 1](images/image.png)
+![Code Screenshot 1](images/image1.png)
 2. `clean_text(text)`: This function removes unnecessary characters from the review text and converts it to lowercase.
 3. `encode_labels(labels)`: This function encodes the sentiment labels as 0 (negative) and 1 (positive).
 4. `train_and_evaluate_lr(data)`: This function trains and evaluates a Logistic Regression model.
